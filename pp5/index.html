@@ -13,59 +13,80 @@
     <body>
         <h1>Hello, world!</h1>
 
-        <form class="row g-3">
-            <div class="col-md-4">
-                <label for="validationDefault01" class="form-label">Company name</label>
-                <input type="text" class="form-control" id="validationDefault01" id="company" value="" required>
-            </div>
-            <div class="col-md-4">
-                <label for="validationDefault02" class="form-label">NIP</label>
-                <input type="text" class="form-control" id="validationDefault02" id="nip" value="" required>
-            </div>
-            <div class="col-md-4">
-                <label for="validationDefault03" class="form-label">City</label>
-                <input type="text" class="form-control" id="validationDefault03" id="city" required>
-            </div>
-            <div class="col-md-5">
-                <label for="validationDefault03" class="form-label">Street</label>
-                <input type="text" class="form-control" id="validationDefault04" id="street" required>
-            </div>
-            <div class="col-md-2">
-                <label for="validationDefault03" class="form-label">House number</label>
-                <input type="text" class="form-control" id="validationDefault05" id="house" required>
-            </div>
-            <div class="col-md-2">
-                <label for="validationDefault03" class="form-label">Apartment number</label>
-                <input type="text" class="form-control" id="validationDefault06" id="apartment">
-            </div>
-            <div class="col-md-3">
-                <label for="validationDefault03" class="form-label">Postcode</label>
-                <input type="text" class="form-control" id="validationDefault07" id="postcode" required>
-            </div>
-            <div class="col-md-3">
-              <label for="validationDefault04" class="form-label">Industry</label>
-              <select class="form-select" id="validationDefault04" id="industry" required>
-                <option selected disabled value="">Choose...</option>
-                <option>medicine</option>
-              </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Comments</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="comments"></textarea>
-              </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" id="isactive" required>
-                    <label class="form-check-label" for="invalidCheck2">
-                    Active
-                    </label>
+        <div class="client-list">
+            <ul class="list-group" id="customer-list">
+                <li class="list-group-item">lorem ipsum</li>
+            </ul>
+        </div>
+        <div class="form" style="display: none;">
+            <form class="row g-3" id="client-form">
+                <div class="col-md-4">
+                    <label for="validationDefault01" class="form-label">Company name</label>
+                    <input type="text" class="form-control" id="validationDefault01" id="company" value="" required>
                 </div>
-            </div>
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit" onclick="save();">zapisz</button>
-            </div>
-        </form>
+                <div class="col-md-4">
+                    <label for="validationDefault02" class="form-label">NIP</label>
+                    <input type="text" class="form-control" id="validationDefault02" id="nip" value="" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="validationDefault03" class="form-label">City</label>
+                    <input type="text" class="form-control" id="validationDefault03" id="city" required>
+                </div>
+                <div class="col-md-5">
+                    <label for="validationDefault03" class="form-label">Street</label>
+                    <input type="text" class="form-control" id="validationDefault04" id="street" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="validationDefault03" class="form-label">House number</label>
+                    <input type="text" class="form-control" id="validationDefault05" id="house" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="validationDefault03" class="form-label">Apartment number</label>
+                    <input type="text" class="form-control" id="validationDefault06" id="apartment">
+                </div>
+                <div class="col-md-3">
+                    <label for="validationDefault03" class="form-label">Postcode</label>
+                    <input type="text" class="form-control" id="validationDefault07" id="postcode" required>
+                </div>
+                <div class="col-md-3">
+                <label for="validationDefault04" class="form-label">Industry</label>
+                <select class="form-select" id="validationDefault04" id="industry" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option>medicine</option>
+                </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Comments</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="comments"></textarea>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" id="isactive" required>
+                        <label class="form-check-label" for="invalidCheck2">
+                        Active
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" onclick="save();">zapisz</button>
+                </div>
+            </form>
+        </div>
+        
         <footer>
+            <script>
+                
+
+                function showForm(){
+                    document.getElementById("client-form").style.display = "block";
+                    document.getElementById("client-list").style.display = "none";
+                }
+
+                function showList(){
+                    document.getElementById("client-form").style.display = "none";
+                    document.getElementById("client-list").style.display = "block";
+                }
+            </script>
             <script>
                 function save(){
 
@@ -77,13 +98,25 @@
                         House: document.getElementById("house").value,
                         Apartment: document.getElementById("apartment").value,
                         Postcode: document.getElementById("postcode").value,
-                        Industry: document.getElementById("industry").value,
+                        Industry: document.getElementById("industry").innerText,
                         Comments: document.getElementById("comments").value,
-                        isActive: document.getElementById("isactive").value,
+                        isActive: document.getElementById("isactive").checked
                     }
                     console.log(newCustomer);
                 };
-            </script>    
+            </script>
+            <script>
+                const customersList = [];
+
+                function showCustomer(){
+                    document.getElementById("customer-list").innerHTML = '';
+                    customersList.forEach((customer) => {
+                        let ul = document.getElementById("customer-list");
+                        ul.innerHTML += '<li class="list-group-item" onclick="showForm();loadClient(${customer.nip});">${customer.name} (${customer.nip})</li>';
+                    });
+                    showList();
+                }
+            </script>
         </footer>
         <!-- Optional JavaScript; choose one of the two! -->
 
